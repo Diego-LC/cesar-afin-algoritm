@@ -12,9 +12,10 @@ El objetivo principal de este proyecto es proporcionar una interfaz web para cif
 
 Para instalar este proyecto, sigue estos pasos:
 
-1. Clona el repositorio: `git clone https://github.com/tu-repo/nombre-del-proyecto.git`
-2. Navega al directorio del proyecto: `cd nombre-del-proyecto`
-3. Instala las dependencias: `pip install flask`
+1. Tener instalado python: <https://www.python.org/downloads/>
+2. Clona el repositorio: `git clone https://github.com/tu-repo/nombre-del-proyecto.git`
+3. Navega al directorio del proyecto: `cd nombre-del-proyecto`
+4. Instala las dependencias: `pip install -r requirements.txt` o bien `pip install flask`
 
 ## Uso
 
@@ -31,7 +32,6 @@ Para instalar este proyecto, sigue estos pasos:
 4. Haz clic en "Procesar" para ver el resultado.
 
 ## Capturas de pantalla
-
 
 ![Página principal](capturas/Captura_2024-08-25_1.png)
 
