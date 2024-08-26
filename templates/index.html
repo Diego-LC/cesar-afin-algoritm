@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Cifrado César-Afín</title>
+</head>
+<body>
+    <h1>Cifrado César-Afín</h1>
+    <form action="/procesar" method="post">
+        <label for="mensaje">Mensaje:</label>
+        <input type="text" id="mensaje" name="mensaje" required><br><br>
+        
+        <label>Alfabeto:</label><br>
+        <input type="radio" id="alfabeto_sin_enie" name="alfabeto" value="ABCDEFGHIJKLMNOPQRSTUVWXYZ" checked>
+        <label for="alfabeto_sin_enie">'ABCDEFGHIJKLMNOPQRSTUVWXYZ'</label><br>
+        
+        <input type="radio" id="alfabeto_con_enie" name="alfabeto" value="ABCDEFGHIJKLMNÑOPQRSTUVWXYZ">
+        <label for="alfabeto_con_enie">'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ'</label><br><br>
+        
+        <label for="clave">Clave:</label>
+        <input type="number" id="clave" name="clave" required><br><br>
+        
+        <input type="radio" id="cifrar" name="accion" value="cifrar" checked>
+        <label for="cifrar">Cifrar</label><br>
+        
+        <input type="radio" id="descifrar" name="accion" value="descifrar">
+        <label for="descifrar">Descifrar</label><br><br>
+        
+        <input type="submit" value="Procesar">
+    </form>
+
+    <div id="resultado"></div>
+    <script>
+        document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const data = new FormData(this);
+            fetch('/procesar', {
+                method: 'POST',
+                body: data
+            })
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('resultado').innerHTML = html;
+            });
+        });
+    </script>
+</body>
+</html>
