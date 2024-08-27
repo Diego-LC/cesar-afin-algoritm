@@ -21,17 +21,23 @@ Para instalar este proyecto, sigue estos pasos:
 
 ## Uso
 
-1. Ejecuta la aplicación Flask:
+Ejecución directa de los algoritmos o desde la interfaz web con flask:
+
+- Ejecución directa:
+
+   ```sh
+   python cesar_afin.py
+   ```
+
+- Ejecutar con la aplicación Flask:
 
     ```sh
     python app.py
     ```
 
-   -O bien ejecuta `python cesar_afin.py` sin necesidad de tener instalado flask, para correr unas pruebas predefinidas.
-
-2. Abre tu navegador web y navega a `http://127.0.0.1:5000/`.
-3. Ingresa el mensaje, selecciona el alfabeto, ingresa la clave y selecciona la acción (cifrar o descifrar).
-4. Haz clic en "Procesar" para ver el resultado.
+  - Abre tu navegador web y navega a `http://127.0.0.1:5000/`.
+  - Ingresa el mensaje, selecciona el alfabeto, ingresa la clave y selecciona la acción (cifrar o descifrar).
+  - Haz clic en "Procesar" para ver el resultado.
 
 ## Capturas de pantalla
 
@@ -49,6 +55,6 @@ Para instalar este proyecto, sigue estos pasos:
 
 ![Resultado del descifrado](capturas/Captura_2024-08-26_4.png)
 
-### Resultado al descifrar con base no coprim
+### Resultado al descifrar con base no coprima
 
 ![Resultado del descifrado](capturas/Captura_2024-08-26_5.png)
