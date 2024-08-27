@@ -1,0 +1,25 @@
+# Ignorar la carpeta __pycache__ en la raiz del proyecto
+__pycache__/
+
+# Ignorar archivos de configuración de entorno virtual
+venv/
+.env/
+
+# Ignorar archivos de log
+*.log
+
+# Ignorar archivos de compilación de Python
+*.pyc
+*.pyo
+*.pyd
+
+# Ignorar archivos de configuración de IDE
+.vscode/
+.idea/
+
+# Ignorar archivos de base de datos SQLite
+*.sqlite3
+
+# Ignorar archivos de configuración de sistema operativo
+.DS_Store
+Thumbs.db
