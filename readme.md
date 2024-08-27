@@ -1,10 +1,12 @@
-# Cifrado César afín
+# Cifrado César-Afín
 
 ## Descripción General
 
-Este proyecto, con base en ciencias de la computación, implementa un cifrado César afín utilizando Python y Flask. El cifrado César es una técnica de encriptación simple en la se hace uso de la aritmética modular para que cada letra del texto se desplace un número fijo de posiciones en el alfabeto.
+Este proyecto, con base en ciencias de la computación, implementa un cifrado César y cifrado afín consecutivamente utilizando Python y Flask.  
+El cifrado César es una técnica de encriptación simple en la se hace uso de la aritmética modular para que cada letra del texto se desplace un número fijo de posiciones en el alfabeto.
+El cifrado afín es una generalización del cifrado César, en el que se desplaza un número fijo de posiciones en el alfabeto, pero además se aplica una transformación lineal a cada letra.
 
-Se puede cifrar o descifrar un mensaje utilizando una clave que indica cuántas posiciones se desplazarán las letras.
+Se puede cifrar o descifrar un mensaje utilizando una clave `a` (base) y una `b` (desplazamiento) que indica las transformaciones y posiciones que se desplazarán las letras.
 
 El objetivo principal de este proyecto es proporcionar una interfaz web para cifrar y descifrar mensajes utilizando este método.
 
@@ -37,8 +39,16 @@ Para instalar este proyecto, sigue estos pasos:
 
 ### Resultado del cifrado
 
-![Resultado del cifrado](capturas/Captura_2024-08-25_2.png)
+![Resultado del cifrado](capturas/Captura_2024-08-26_2.png)
 
 ### Resultado del descifrado
 
-![Resultado del descifrado](capturas/Captura_2024-08-25_3.png)
+![Resultado del descifrado](capturas/Captura_2024-08-26_3.png)
+
+### Resultado al cifrar con base no coprima
+
+![Resultado del descifrado](capturas/Captura_2024-08-26_4.png)
+
+### Resultado al descifrar con base no coprim
+
+![Resultado del descifrado](capturas/Captura_2024-08-26_5.png)

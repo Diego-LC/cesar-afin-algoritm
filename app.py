@@ -11,17 +11,18 @@ def index():
 def procesar():
     mensaje = request.form['mensaje']
     alfabeto= request.form['alfabeto']
-    clave = int(request.form['clave'])
+    clave_a = int(request.form['clave_a'])
+    clave_b = int(request.form['clave_b'])
     accion = request.form['accion']
     
     if accion == 'cifrar':
-        resultado = cifrar(mensaje, clave, alfabeto)
+        resultado = cifrar(mensaje, clave_a, clave_b, alfabeto)
     else:
-        resultado = descifrar(mensaje, clave, alfabeto)
+        resultado = descifrar(mensaje, clave_a, clave_b, alfabeto)
     
     print(f"Mensaje: {mensaje}")
     print(f"Alfabeto: {alfabeto}")
-    print(f"Desplazamiento: {clave}")
+    print(f"Clave (base, desplazamiento): {clave_a, clave_b}")
     print(f"Accion: {accion}")
     print(f"Resultado: {resultado}")
     

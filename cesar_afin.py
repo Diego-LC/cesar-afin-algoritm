@@ -1,49 +1,102 @@
-def cifrar(mensaje, k, alfabeto):
+def cifrar(mensaje, a, b, alfabeto):
     alfabeto = alfabeto.lower()
     mensaje = mensaje.lower()
-    resultado = ''
     n = len(alfabeto)
+
+    if not esCoPrimo(a, len(alfabeto)):
+        return "La clave 'a' (base) no es coprima con la longitud del alfabeto"
+
+    #Cifrado de César
+    cifradoCesar = ''
+    k = a+b
     for char in mensaje:
         if char in alfabeto:
             index = alfabeto.index(char)
-            nuevo_index = (index + k) % n # Aritmética modular desplarzar k posiciones
-            resultado += alfabeto[nuevo_index]
+            nuevo_index = (index + k) % n
+            cifradoCesar += alfabeto[nuevo_index]
         else:
-            resultado += char
-    return resultado
+            cifradoCesar += char
 
-def descifrar(mensaje, k, alfabeto):
+    # Cifrado afín
+    cifradoAfin = ''
+    for char in cifradoCesar:
+        if char in alfabeto:
+            index = alfabeto.index(char)
+            nuevo_index = (a*index + b) % n
+            cifradoAfin += alfabeto[nuevo_index]
+        else:
+            cifradoAfin += char
+
+    return cifradoAfin
+
+def descifrar(mensaje, a ,b , alfabeto):
     alfabeto = alfabeto.lower()
     mensaje = mensaje.lower()
-    resultado = ''
     n = len(alfabeto)
+
+    if not esCoPrimo(a, len(alfabeto)):
+        return "La clave 'a' (base) no es coprima con la longitud del alfabeto"
+    
+    # Descifrado Afín
+    descifradoAfin = ''
+    a_inv = inverso_multiplicativo(a, n)
+    
     for char in mensaje:
+        if char in alfabeto:
+            index = alfabeto.index(char)
+            nuevo_index = (a_inv*(index - b)) % n
+            descifradoAfin += alfabeto[nuevo_index]
+        else:
+            descifradoAfin += char
+    
+    # Descifrado de César
+    descifradoCesar = ''
+    k = a+b
+    for char in descifradoAfin:
         if char in alfabeto:
             index = alfabeto.index(char)
             nuevo_index = (index - k) % n
-            resultado += alfabeto[nuevo_index]
+            descifradoCesar += alfabeto[nuevo_index]
         else:
-            resultado += char
-    return resultado
+            descifradoCesar += char
+
+    return descifradoCesar
+
+def esCoPrimo(a, n):
+    if a == 1:
+        return True
+    for i in range(2, n):
+        if a % i == 0 and n % i == 0:
+            return False
+    return True
+
+# inverso multiplicativo en aritmética modular (a^-1) es el menor número que (a*a^-1)mod m = 1
+def inverso_multiplicativo(a, n):
+    for i in range(1, n):
+        if (a*i) % n == 1:
+            return i
+    return None
 
 # Pruebas
 if __name__ == "__main__":
-    alfabeto = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    alfabeto = 'abcdefghijklmnñopqrstuvwxyz'
     mensaje_original = 'un mensaje secreto que se necesita cifrar y descifrar'
-    k = 587
+    a = 587
+    b = 123
 
-    mensaje_cifrado = cifrar(mensaje_original, k, alfabeto)
-    mensaje_descifrado = descifrar(mensaje_cifrado, k, alfabeto)
+    mensaje_cifrado = cifrar(mensaje_original, a, b, alfabeto)
+    mensaje_descifrado = descifrar(mensaje_cifrado, a, b, alfabeto)
 
     print(f"Mensaje original: {mensaje_original}")
     print(f"Mensaje cifrado: {mensaje_cifrado}")
     print(f"Mensaje descifrado: {mensaje_descifrado}")
 
     mensaje_original = 'algoritmo de cesar escrito en python'
-    k = 5
+    a = 3
+    b = 7
 
-    mensaje_cifrado = cifrar(mensaje_original, k, alfabeto)
-    mensaje_descifrado = descifrar(mensaje_cifrado, k, alfabeto)
+    mensaje_cifrado = cifrar(mensaje_original, a, b, alfabeto)
+    mensaje_descifrado = descifrar(mensaje_cifrado, a, b, alfabeto)
 
     print(f"\nMensaje original: {mensaje_original}")
     print(f"Mensaje cifrado: {mensaje_cifrado}")

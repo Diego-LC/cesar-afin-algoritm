@@ -6,30 +6,49 @@
 </head>
 <body>
     <h1>Cifrado César-Afín</h1>
-    <form action="/procesar" method="post">
-        <label for="mensaje">Mensaje:</label>
-        <input type="text" id="mensaje" name="mensaje" required><br><br>
-        
-        <label>Alfabeto:</label><br>
-        <input type="radio" id="alfabeto_sin_enie" name="alfabeto" value="ABCDEFGHIJKLMNOPQRSTUVWXYZ" checked>
-        <label for="alfabeto_sin_enie">'ABCDEFGHIJKLMNOPQRSTUVWXYZ'</label><br>
-        
-        <input type="radio" id="alfabeto_con_enie" name="alfabeto" value="ABCDEFGHIJKLMNÑOPQRSTUVWXYZ">
-        <label for="alfabeto_con_enie">'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ'</label><br><br>
-        
-        <label for="clave">Clave:</label>
-        <input type="number" id="clave" name="clave" required><br><br>
-        
-        <input type="radio" id="cifrar" name="accion" value="cifrar" checked>
-        <label for="cifrar">Cifrar</label><br>
-        
-        <input type="radio" id="descifrar" name="accion" value="descifrar">
-        <label for="descifrar">Descifrar</label><br><br>
-        
-        <input type="submit" value="Procesar">
-    </form>
+    <h2>Algoritmo de cifrado César-Afín</h2>
+    <p>El cifrado César es un tipo de cifrado por sustitución en el cual cada letra de un texto se reemplaza por otra 
+        letra que se encuentra un número fijo (k) de posiciones más adelante en el alfabeto.</p>
+    <p>El cifrado Afín es una variante del cifrado César en la que se añade una clave adicional (a) que se multiplica 
+        por la posición de la letra en el alfabeto antes de aplicar el desplazamiento (b).</p>
+    <p>Este algoritmo (César-Afín) implementa ambos cifrados uno detrás del otro donde primeramente el mensaje 
+        se cifra con el cifrado César y una clave k (calculada como base + desplazamiento). 
+        Luego, el mensaje se vuelve a cifrar con el algoritmo Afín.</p>
+    <br>
+    <h3>Funcionamiento:</h3>
+    <p>Introduce el mensaje a cifrar o descifrar, selecciona el alfabeto y la clave (base y desplazamiento) para obtener el resultado.</p>
+    <p>Nota: Para que funcione correctamente, el valor de la longitud del alfabeto elegido y el valor de la base deben ser coprimos, 
+        es decir, el máximo común divisor entre estos valores debe ser el 1.</p>
+    <br>
+    <div class="container" style="padding: 40px; border: 2px solid;">
+        <form action="/procesar" method="post">
+            <label for="mensaje">Mensaje:</label>
+            <input type="text" id="mensaje" name="mensaje" required><br><br>
+            
+            <label>Alfabeto:</label><br>
+            <input type="radio" id="alfabeto_sin_enie" name="alfabeto" value="ABCDEFGHIJKLMNOPQRSTUVWXYZ" checked>
+            <label for="alfabeto_sin_enie">'ABCDEFGHIJKLMNOPQRSTUVWXYZ'</label><br>
+            
+            <input type="radio" id="alfabeto_con_enie" name="alfabeto" value="ABCDEFGHIJKLMNÑOPQRSTUVWXYZ">
+            <label for="alfabeto_con_enie">'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ'</label><br><br>
+            <div style="display: flex; justify-content: flex-start; align-items: flex-start;">
+                <label for="clave_a">Base:</label>
+                <input type="number" id="clave_a" name="clave_a"  style="width: 50px;" required><br><br>
+                <label for="clave_b" style="padding-left: 50px;">Desplazamiento:</label>
+                <input type="number" id="clave_b   " name="clave_b" style="width: 50px;" required><br><br>
+        </div>
+                    
+            <input type="radio" id="cifrar" name="accion" value="cifrar" checked>
+            <label for="cifrar">Cifrar</label><br>
+            
+            <input type="radio" id="descifrar" name="accion" value="descifrar">
+            <label for="descifrar">Descifrar</label><br><br>
+            
+            <input type="submit" value="Procesar">
+        </form>
+        <div id="resultado"></div>
+    </div>
 
-    <div id="resultado"></div>
     <script>
         document.querySelector('form').addEventListener('submit', function(event) {
             event.preventDefault();
