@@ -1,10 +1,11 @@
 def cifrar(mensaje, a, b, alfabeto):
+    
+    if not esCoPrimo(a, len(alfabeto)):
+        return "La clave 'a' (base) no es coprima con la longitud del alfabeto"
+    
     alfabeto = alfabeto.lower()
     mensaje = mensaje.lower()
     n = len(alfabeto)
-
-    if not esCoPrimo(a, len(alfabeto)):
-        return "La clave 'a' (base) no es coprima con la longitud del alfabeto"
 
     #Cifrado de César
     cifradoCesar = ''
